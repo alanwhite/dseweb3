@@ -53,6 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+String title = 'Drum Score Editor';
+String description = 'Drum Score Editor is free software for drum scores ' +
+    'in the pipe band world. Runs on macOS, Windows and Linux - happy scoring!';
+
 class HomeLarge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,7 +83,7 @@ class HomeLarge extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
-                                      'Drum Score Editor',
+                                      title,
                                       textAlign: TextAlign.right,
                                       style: TextStyle(
                                           color: Colors.white,
@@ -91,7 +95,7 @@ class HomeLarge extends StatelessWidget {
                                           letterSpacing: -0.25),
                                     ),
                                     Text(
-                                      'Drum Score Editor is free software for drum scores in the pipe band world. Runs on macOS, Windows and Linux - happy scoring!',
+                                      description,
                                       textAlign: TextAlign.right,
                                       style: TextStyle(
                                           color: Colors.white,
@@ -138,7 +142,57 @@ class HomeLarge extends StatelessWidget {
 class HomeSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AuthButton();
+    return Row(
+      children: [
+        Expanded(flex: 1, child: Container()),
+        Expanded(
+            flex: 8,
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Helvetica Neue',
+                    fontSize: 36,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.w300,
+                    height: 2,
+                    letterSpacing: -0.25),
+              ),
+              Text(
+                description,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Helvetica Neue',
+                    fontSize: 16,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.w200,
+                    height: 1.75),
+              ),
+              Image.asset('assets/logo.png',
+                  width: 200, height: 200, fit: BoxFit.cover),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  AuthButton(),
+                  FlatButton(onPressed: () {}, child: Text('Download')),
+                ],
+              ),
+              SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  FlatButton(onPressed: () {}, child: Text('More Info')),
+                  FlatButton(onPressed: () {}, child: Text('Licensing')),
+                ],
+              ),
+            ])),
+        Expanded(flex: 1, child: Container()),
+      ],
+    );
   }
 }
 
