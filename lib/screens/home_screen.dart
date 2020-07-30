@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth < 600) {
+          if (constraints.maxWidth < 790) {
             print('small');
             return HomeSmall();
           } else {
@@ -56,12 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
 String title = 'Drum Score Editor';
 String description = 'Drum Score Editor is free software for drum scores ' +
     'in the pipe band world. Runs on macOS, Windows and Linux - happy scoring!';
+String signIn = 'Sign In';
+String signOut = 'Sign Out';
 
 class HomeLarge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 36, bottom: 36),
+      // margin: EdgeInsets.only(top: 36, bottom: 36),
       child: Row(
         children: [
           Expanded(flex: 1, child: Container()),
@@ -69,18 +71,25 @@ class HomeLarge extends StatelessWidget {
               flex: 8,
               child: Column(
                 children: [
-                  Expanded(flex: 3, child: Container()),
-                  Expanded(
-                      flex: 3,
+                  Flexible(
+                      // flex: 3,
+                      fit: FlexFit.tight,
+                      child: Container()),
+                  // Expanded(
+                  //     flex: 3,
+                  //     child:
+                  Container(
+                      height: 170,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Flexible(
                               fit: FlexFit.tight,
                               child: Container(
-                                margin: EdgeInsets.only(top: 15, right: 25),
+                                margin: EdgeInsets.only(right: 25),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       title,
@@ -112,11 +121,12 @@ class HomeLarge extends StatelessWidget {
                               width: 300, height: 300, fit: BoxFit.cover),
                         ],
                       )),
-                  Expanded(
-                    flex: 3,
+                  Flexible(
+                    // flex: 3,
+                    fit: FlexFit.tight,
                     child: Container(
                       alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(top: 25),
+                      margin: EdgeInsets.only(top: 30),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -210,7 +220,7 @@ class AuthButton extends StatelessWidget {
             }
           },
           child: Text(
-            login.isLoggedIn ? 'Sign Out' : 'Sign In',
+            login.isLoggedIn ? signOut : signIn,
           ));
     });
   }

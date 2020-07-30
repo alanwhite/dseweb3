@@ -4,8 +4,10 @@ import 'dart:js' as js;
 
 import 'screens/home_screen.dart';
 import 'providers/login.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
+  debugPaintSizeEnabled = false;
   // print('in main');
   var uri = Uri.tryParse(js.context['location']['href']);
   // print(uri);
